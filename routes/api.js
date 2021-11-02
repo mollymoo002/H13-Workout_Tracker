@@ -38,11 +38,14 @@ router.get("/api/workout/range", (req, res) => {
 
 // post route for workouts
 router.post("/api/workout", ({ body }, res) => {
+  console.log("POST /api/workout")
+  console.log(body)
     db.Workout.create(body)
       .then(dbWorkout => {
         res.json(dbWorkout);
       })
       .catch(err => {
+        console.log(err)
         res.status(400).json(err);
       });
 });
